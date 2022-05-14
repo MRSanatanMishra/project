@@ -11,10 +11,9 @@ class Profile(models.Model):
     profilepic=models.ImageField(upload_to='uploads/profile')
     location=models.TextField(max_length=300)
     about=models.TextField(max_length=500)
-    
 
     def __str__(self):
-        self.name
+        return self.name
 
 class Category(models.Model):
 
