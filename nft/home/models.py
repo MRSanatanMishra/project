@@ -39,7 +39,7 @@ class NFT(models.Model):
 
     # TODO: Define fields here
     title = models.CharField(max_length=150)
-    createdOn=models.DateTimeField('Created On')
+    createdOn=models.DateTimeField('Created On',auto_now=True)
     worthInD = models.DecimalField(max_digits=12,decimal_places=4)   
     #owner,image ,category(f),token,summary,currency(d$)
     owner=models.ForeignKey(Profile,on_delete=models.DO_NOTHING)

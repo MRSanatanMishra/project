@@ -26,7 +26,7 @@ class NFTAdmin(admin.ModelAdmin):
     '''Admin View for NFT'''
 
     list_display = ('title','createdOn','worthInD','owner',
-                    'category','token','currency'  )
+                    'category','token','currency')
   
 @admin.register(bids)
 class bidsAdmin(admin.ModelAdmin):
