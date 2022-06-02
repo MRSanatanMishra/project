@@ -1,0 +1,92 @@
+{% extends 'layouts/base.html' %}
+
+
+{% block stylesheets %}
+<style>
+  .contain {
+    height: 400px;
+    background-image: url("{{pro.banner.url}}");
+    background-position: center;
+
+  }
+
+  .creator-head {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 20px;
+  }
+
+  .creator-descp {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 70px;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  a:hover {
+    color: black;
+  }
+
+  .custom-height {
+    height: 300px;
+    width: auto;
+  }
+
+  .cus-card {
+    margin-bottom: 20px;
+  }
+
+  .row {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .container-fluid {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+</style>
+{% endblock stylesheets %}
+
+{% block content %}
+<div class="contain"></div>
+
+<div class="container">
+  <h3 class="creator-head">{{pro.name}}</h3>
+  <h5 class="creator-descp">{{pro.bio}}<br>
+    Instagram/Twitter: @pachispace
+    <br>Discord: https://discord.gg/pachispace
+  </h5>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    {% for item in nfts %}
+
+    <div class="col-lg-3 col-md-6 col-sl-12">
+      <a href="{% url 'product' item.id %}">
+        <div class="card cus-card card2" style="width: 18rem;">
+          <img src="{{item.image.url}}" class="card-img-top custom-height" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{item.title}}</h5>
+            <p>Current Price: {{item.price}} {{item.currency}}</p>
+            <P>Creator: {{item.owner}}</P>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    {% empty %}
+    <div class="alert alert-warning text-center" role="alert">
+      <h4 class="alert-heading">No Nft found!</h4>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+{% endblock content %}
